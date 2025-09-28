@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Crop Detector — Enter Problem</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Crop Problem Detector</h1>
+      <form method="POST" action="/">
+        <label for="crop">Crop name</label>
+        <input list="crops" id="crop" name="crop" placeholder="e.g. tomato" />
+        <datalist id="crops">
+          {% for c in known_crops %}
+            <option value="{{ c }}">
+          {% endfor %}
+        </datalist>
+
+        <label for="symptom">Problem / Symptom</label>
+        <input type="text" id="symptom" name="symptom" placeholder="e.g. yellow leaves" />
+
+        <button type="submit">Detect & Suggest</button>
+      </form>
+
+      <p class="note">Tip: Try "tomato" + "yellow leaves" or "white spots" for demo results.</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Results — Crop Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Detection Result</h1>
+
+      {% if result.error %}
+        <p class="error">{{ result.error }}</p>
+      {% else %}
+        <p><strong>Crop:</strong> {{ result.crop }}</p>
+        <p><strong>Symptom:</strong> {{ result.symptom }}</p>
+        <p><strong>Likely disease / cause:</strong> {{ result.disease }}</p>
+
+        <h3>Suggested pesticides / treatments</h3>
+        <ul>
+          {% for p in result.pesticides %}
+            <li>{{ p }}</li>
+          {% endfor %}
+        </ul>
+
+        <h3>Advice</h3>
+        <p>{{ result.advice }}</p>
+      {% endif %}
+
+      <a class="back" href="/">← Back</a>
+    </div>
+  </body>
+</html>
